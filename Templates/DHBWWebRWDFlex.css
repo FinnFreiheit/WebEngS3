@@ -1,0 +1,31 @@
+/* -----------------------------------------------------------------------------
+   The following CSS 3 Grid statements layouts the viewport (visible page).
+  The Grid consists of the Header, the Navigation ,
+  the scrollable Part (youTube, Fakultäten) and the footer
+  In this case the Grid has four rows (height = auto) and 1 column with a
+  width of 100 %
+  The Header, the youTube and the Fakultäten become a flexbox
+  The whole Grid is positioned fixed and row 3 should be made scrollable
+  ----------------------------------------------------------------------------  */
+.pagegridcontainer {display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    justify-items: stretch;
+    align-items: stretch;
+  }
+  .pagegridheader {grid-area: 1 / 1 / span 1 / span 1}
+  .pagegridnavigation {grid-area: 2 / 1 / span 1 /span 1}
+  .pagegridsrcol  {grid-area: 3 / 1 / span 1 / span 1}
+  .pagegridsfooter  {grid-area: 4 / 1 / span 1 / span 1}
+/* -----------------------------------------------------------------------------
+   The following statements are examples of flex-box classes, of course you can
+   build your own
+-------------------------------------------------------------------------------- */
+.flexboxheader,.flexboxnav,.flexFakultaet {display:flex; flex-flow: row wrap;}
+.flexboxheader {justify-content: space-between; align-items: center;}
+.flexboxnav {justify-content: flex-end;}
+.flexyouTube {flex-flow:column; max-width: 700px;}
+
+/* consider the changes needed based on different screen sizes caught by the
+    @media only screen and (min-width:.....
+                                                                                 */

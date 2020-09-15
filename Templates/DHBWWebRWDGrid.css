@@ -1,0 +1,90 @@
+/* This CSS Template adds a couple of MQ statement at the bottom which we can use
+unchanged.
+It defines 4 different  screen sizes
+(1) for screen width 10 to 449 we activate classes .col-handy-xx
+(2) for screen width 450 to 699 we activate classes .col-small-xx
+(3) for screen width 700 to 999 we activate classes .col-medium-xx
+(4) for screen width > 999 activate classes .col-large-xx(4)
+please copy and past this part to you css file used in the earlier exercise
+
+The next statement is needed to make it clear that padding and border sizes are included in
+box-width                                                                        */
+* {box-sizing: border-box;margin:0;padding:0;}
+
+/* Responsive Stuff
+------------------------------------------------------
+The next statement is needed to clear the floating after each row               */
+.row::after { clear: both; content: ""; display: block;}
+/* for all .col class element we define the floating                            */
+[class*="col-"] {float: left;}
+/* use media query to push the different styles
+/* For very small devices:
+  10 width to 450                                                               */
+@media only screen and (min-width: 10px) {
+  .col-handy1 {width: 8.33%;}
+  .col-handy2 {width: 16.66%;}
+  .col-handy3 {width: 25%;}
+  .col-handy4 {width: 33.33%;}
+  .col-handy5 {width: 41.66%;}
+  .col-handy6 {width: 50%;}
+  .col-handy7 {width: 58.33%;}
+  .col-handy8 {width: 66.66%;}
+  .col-handy9 {width: 75%;}
+  .col-handy10 {width: 83.33%;}
+  .col-handy11 {width: 91.66%;}
+  .col-handy12 {width: 100%;}
+  span.headertext {font-size: 1.8em;}
+  section p {font-size: 0.8em;}
+  nav li {border-bottom: 1px solid white; border-left:none;}
+}
+    /* For small  tablets: 450-700  */
+@media only screen and (min-width: 450px) {
+.col-small1 {width: 8.33%;}
+.col-small2 {width: 16.66%;}
+.col-small3 {width: 25%;}
+.col-small4 {width: 33.33%;}
+.col-small5 {width: 41.66%;}
+.col-small6 {width: 50%;}
+.col-small7 {width: 58.33%;}
+.col-small8 {width: 66.66%;}
+.col-small9 {width: 75%;}
+.col-small10 {width: 83.33%;}
+.col-small11 {width: 91.66%;}
+.col-small12 {width: 100%;}
+span.headertext {font-size: 1.9em;}
+section p {font-size: 1.0em;}
+nav li {border-left: 1px solid white; border-bottom: none;}
+}
+@media only screen and (min-width: 700px) {
+  .col-med1 {width: 8.33%;}
+  .col-med2 {width: 16.66%;}
+  .col-med3 {width: 25%;}
+  .col-med4 {width: 33.33%;}
+  .col-med5 {width: 41.66%;}
+  .col-med6 {width: 50%;}
+  .col-med7 {width: 58.33%;}
+  .col-med8 {width: 66.66%;}
+  .col-med9 {width: 75%;}
+  .col-med10 {width: 83.33%;}
+  .col-med11 {width: 91.66%;}
+  .col-med12 {width: 100%;}
+  span.headertext {font-size: 1.5em;}
+  section p {font-size: 1.1em;}
+  nav li {border-left: 1px solid white; border-bottom: none;}
+}
+@media only screen and (min-width: 1000px) {
+  .col-large1 {width: 8.33%;}
+  .col-large2 {width: 16.66%;}
+  .col-large3 {width: 25%;}
+  .col-large4 {width: 33.33%;}
+  .col-large5 {width: 41.66%;}
+  .col-large6 {width: 50%;}
+  .col-large7 {width: 58.33%;}
+  .col-large8 {width: 66.66%;}
+  .col-large9 {width: 75%;}
+  .col-large10 {width: 83.33%;}
+  .col-large11 {width: 91.66%;}
+  .col-large12 {width: 100%;}
+  span.headertext {font-size: 1.9em;}
+  nav li {border-left: 1px solid white; border-bottom: none;}
+}

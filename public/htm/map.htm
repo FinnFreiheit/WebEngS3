@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+You can use this HTM w/o a change..  try to understand what is going here
+Disclaimer:  there might be still some typos or coding issues. Improve it !!
+-->
+<html>
+<body>
+<h1>My First Google Map and SVG Graph</h1>
+<!-- This div with the id = map is used as container to have the width and height boundaries
+for the Google Map of Stuttgart. We need it to reference it when we create a Google Map object.
+-->
+<div id="map" style="width:400px;height:400px;"></div>
+<!-- The next div is used as container for our SVG. The trick is, that we move it up by 270 px, which results
+that the SVG polygon will be partly overlay the Google map (this may look cool, or not)
+-->
+<div id="mysvg" style="position:relative; top:-270px; left:10%; width:30%; height:auto;">
+  <!-- the svg tag contains the drawing description (could also be a external file) of our star.
+  the viewBox attribute is important as it gives the the x/y range
+  -->
+  <svg viewBox="0 0 230 250">
+    <!-- the rect xml element defines a retancle with that size starting with the position (0,0),
+    the fill attribute gives a color and a border line, nice is fill.opacity
+    which let us make this rectangle somehow partly transparent
+    -->
+  <rect x="0" y="0" width="230" height="250"
+    style="fill:grey;stroke:pink;stroke-width:5;fill-opacity:0.75;stroke-opacity:0.9" />
+  <!-- the polygon xml tag describes the star defining each point and the lines connnecting those
+  -->
+  <polygon  id="myPolygon" points="100,10 40,198 190,78 10,78 160,198"
+   style="fill:blue;stroke:white;stroke-width:2;fill-rule:nonzero;"/>
+   <!-- and we are placing some text on certain positions
+   -->
+   <text x="15" y="50" fill="black">DHBW</text>
+   <text x="130" y="50" fill="black">Stuttgart</text>
+   <text x="5" y="210" fill="black">Informatik</text>
+   <text x="150" y="210" fill="black"> Semester 4</text>
+</svg>
+</div>
+<!--  End of the whole SVG star describption
+Now back to Google Map, here we need a bit of script code (we learn about JavaScript later)
+Google requires a function which defines the map option as object.. just take it. Most important
+are the GPS coordinates of Stuttgart
+-->
+<script>
+function myMap() {
+var mapOptions = {
+//
+    zoom: 16,
+    center: {lat: 48.773357, lng:  9.170518},
+    mapTypeId: google.maps.MapTypeId.HYBRID
+}
+// Below is now the instantiation of our map, as we give the Div container and the Options object
+// as paramter...
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+//
+// This script code changes the color when you click the polygon.. we learn that all
+//
+document.getElementById('myPolygon').onclick = changecolor;
+var colors = "0f0 0ff f60 f0f 00f f00".split(' '), i=0;
+function changecolor(){
+  document.getElementById('myPolygon').style.fill = "#"+colors[i++%colors.length];
+}
+</script>
+<!-- Here we load the Google Map API (Javascript Code) and our function above will be called when loaded.
+done -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4oZHJJMDE1e54j4uiN_rOT_UKzV4WpWM&callback=myMap"></script>
+<!--
+To use this code we use a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+</body>
+</html>
