@@ -9,7 +9,7 @@ nav li:nth-child(2n+1) {background-color: #e2e4e8;}
 nav::after{clear:both; content:""; display:block;}
 nav li {list-style-type: none; display: inline-block; padding: 1.5em; float: right;
         border-left-style: solid; border-left-color: white; border-left-width: 1px; }
-nav li:first-child {float:left};
+nav li:first-child {float:left}
 nav li:hover {background-color:white;}
 nav li a { text-decoration: none; padding: inherit; color: yellow;   font-weight: bold;}
 a:visited { color: blue; }
