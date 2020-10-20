@@ -133,7 +133,7 @@ app.get('/news1', function(req, res){
       console.log("Fehler beim Transfer", err)
       res.send(err);
     } finally {
-      return;
+
     }
   });
   });

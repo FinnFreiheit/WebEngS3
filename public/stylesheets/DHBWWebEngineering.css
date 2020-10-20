@@ -6,24 +6,81 @@ In our CSS exercise we will take this a step further and
      2. have the background of each navigation list item switch between two different grey
      3. We change the navigation entries and put Informatik to the left (instead to the right)
 */
-* {margin:0;padding:0;box-sizing: border-box;} /* just to force a good default                          */
-header,footer {color: white;  background-color: black; padding:1em;width:100%;}
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-color: #e2e4e8;
+}
+
+/* just to force a good default*/
+header, footer
+{
+    color: #e2e4e8;
+    background-color: darkgray;
+    padding: 1em;
+    width: 100%;
+}
+
+#youtube
+{
+    background-color: #e2e4e8;
+}
+
 /* make header fixed
  Remember fixed elements are postioned absolute to the window screen/viewport
  For the header and navigation it might make sense to put both in a  div container and make
 that container fixed using the properties top and left                          */
 
-#id of the complete header.. {position:fixed; top:??; left:??; width:100%;}
+.fixed
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
 /* Make the footer fixed                                                        */
-footer {pos.. bottom.....}
+footer
+{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
 /*
 /* Now let's make the Navigation bar look cool
 /* Give the navigation bar a darkgrey background                                */
-...  {background...:darkgrey;}
-nav::after{clear:both; content:""; display:block;}   /* just take this          */
+nav
+{
+    background-color: lightgray;
+}
+
+nav::after
+{
+    clear: both;
+    content: "";
+    display: block;
+}
+
+/* just take this          */
 /* Give each even list item the color #848d9e; and each odd #e2e4e8;            */
-...:nth-. () {background..: }
-...:nth-. () {background..: }
+nav li:nth-child(2n)
+{
+    background-color: #848d9e;
+}
+
+nav li:nth-child(2n+11)
+{
+    background-color: #e2e4e8;
+}
+
 /* The next CSS defines the list item in general (beside the background color)
 /* we use
 list-style-type: none; to not show bullets
@@ -31,19 +88,77 @@ float:right; to let all items float to the right
 padding:1.3rem; to enlarge each navigation link
 and we just mean the list items (li) after the nav (not potential others)
 .. how would you construct the CSS for that                                     */
-...  {                 }
-/* For the floating there is one exception the first li should go the the left.
-How ?                                                                           */
-... {float:left}
+
+nav li
+{
+    list-style-type: none;
+    display: inline-block;
+    padding: 1.5em;
+    float: left;
+    border-left-style: solid;
+    border-left-color: white;
+    border-left-width: 1px;
+}
+
 /* Take the rest as it is or modify to improve.. this is up to you              */
-nav li:hover {background-color:white;}
-nav li a { text-decoration: none; padding: inherit; color: yellow; font-weight: bold;}
-a:visited { color: blue;}
-a:hover, a:active, a:focus { color: darkred;  text-decoration: none;}
-section { clear:both; padding:5em; border-bottom: 2px solid black; background-color: #666;}
+nav li:hover
+{
+    background-color: white;
+}
+
+nav li a
+{
+    text-decoration: none;
+    padding: inherit;
+    color: yellow;
+    font-weight: bold;
+}
+
+a:visited
+{
+    color: blue;
+}
+
+a:hover, a:active, a:focus
+{
+    color: darkslategrey;
+    text-decoration: none;
+}
+
+section
+{
+    clear: both;
+    padding: 5em;
+    border-bottom: 2px solid black;
+    background-color: #666;
+}
+
 /* Properties for the table */
-table {clear:both; margin:10px 2px 10px 2px; border-collapse: collapse;}
-tr:hover{background-color:rgba(20, 20, 58, 0.29);}
-td {border: 2px solid lightgrey;}
-td:nth-child(n) {padding:10px;}
-td img {width:100%;min-width: 200px;}
+table
+{
+    background-color: #e2e4e8;
+    clear: both;
+    margin: 10px 2px 50px 2px;
+    border-collapse: collapse;
+}
+
+tr:hover
+{
+    background-color: rgba(20, 20, 58, 0.29);
+}
+
+td
+{
+    border: 2px solid lightgrey;
+}
+
+td:nth-child(n)
+{
+    padding: 10px;
+}
+
+td img
+{
+    width: 100%;
+    min-width: 200px;
+}
