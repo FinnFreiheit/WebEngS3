@@ -22,18 +22,23 @@ var app = express();
 // app.use('/static', express.static('/views/HTML'))
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 // -----------------------------------------------------------------------------
 // This is a HTPP Basic Authentication Code fragment for potential use
 // in this example we force a http basic authentication if there is a request
 // with localhost:6001/admin
 // -----------------------------------------------------------------------------
-app.use('/admin',basicAuth( { authorizer: myAuthorizer,
-                    challenge: true} ))
-function myAuthorizer(username, password) {
+app.use('/admin', basicAuth({
+                                authorizer: myAuthorizer,
+                                challenge : true
+                            }))
+
+function myAuthorizer(username, password)
+{
     console.log("Erstmal anmelden hier");
     return username.startsWith('Asomething') && password.startsWith('secretstrange')
 }
+
 // -----------------------------------------------------------------------------
 // Below commented code enables CORS, just in case you want to explore this
 // option
@@ -46,10 +51,11 @@ function myAuthorizer(username, password) {
 // -----------------------------------------------------------------------------
 // the WebServer now listens to http://localhost:6001 / http gets and posts
 // -----------------------------------------------------------------------------
-var server = app.listen(6001, function() {
-  console.log('***********************************');
-  console.log('listening:', 6001);
-  console.log('***********************************');
+var server = app.listen(6001, function ()
+{
+    console.log('***********************************');
+    console.log('listening:', 6001);
+    console.log('***********************************');
 });
 // -----------------------------------------------------------------------------
 // The following serve for different url paths
@@ -63,95 +69,131 @@ var server = app.listen(6001, function() {
 // node will use the public folder and concatenates the url path in order to
 // find the file
 // -----------------------------------------------------------------------------
-app.get('/static/:document.:extension', function(req, res){
-   var docname = "/" + req.params.extension + "/" + req.params.document+ "." + req.params.extension ;
-   var options = {
-   root: __dirname + '/public/',
-   }
-   res.sendFile(docname, options, function (err) { // send the file !!
-    if (err) {res.send(err);}
-     else {console.log('Sent:', docname);
+app.get('/static/:document.:extension', function (req, res)
+{
+    var docname = "/" + req.params.extension + "/" + req.params.document + "." + req.params.extension;
+    var options = {
+        root: __dirname + '/public/',
     }
-  });
+    res.sendFile(docname, options, function (err)
+    { // send the file !!
+        if (err)
+        {
+            res.send(err);
+        }
+        else
+        {
+            console.log('Sent:', docname);
+        }
+    });
 });
 // -----------------------------------------------------------------------------
 // localhost:6001/redirect
 // will redirect us to the offical DHBW Homepage
 // -----------------------------------------------------------------------------
-app.get('/redirect', function(req, res){
-   res.redirect('https://www.dhbw-stuttgart.de/home/');
+app.get('/redirect', function (req, res)
+{
+    res.redirect('https://www.dhbw-stuttgart.de/home/');
 });
 // -----------------------------------------------------------------------------
 // localhost:6001/home
 //  we show the map.htm which is the Google Map at the local Stuttgart
 // -----------------------------------------------------------------------------
-app.get('/home', function(req, res){
-  var docname = "/htm/map.htm";
-  var options = {root: __dirname + '/public/'}
-  res.sendFile(docname, options, function (err) { // send this file
-   if (err) {
-     res.send(err);
-   } else {
-     console.log('Sent:', docname);
-   }
- });
+app.get('/home', function (req, res)
+{
+    var docname = "/htm/map.htm";
+    var options = {root: __dirname + '/public/'}
+    res.sendFile(docname, options, function (err)
+    { // send this file
+        if (err)
+        {
+            res.send(err);
+        }
+        else
+        {
+            console.log('Sent:', docname);
+        }
+    });
 });
 //------------------------------------------------------------------------------
 // localhost:6001/proxy?url_to_be_proxied
 // The incoming request will transfered using the request package
 //------------------------------------------------------------------------------
-app.all('/proxy', function(req, res){
+app.all('/proxy', function (req, res)
+{
     var decompose = req.originalUrl.split("?");
     var fullurl = decompose[1] + "?" + decompose[2];
-    fullurl = fullurl.replace("url=","");
+    fullurl = fullurl.replace("url=", "");
     console.log("Proxy Server reached", fullurl);
-    var o = {uri: fullurl,method: req.method,json: true};
-    request(o, function(e, r, b){
-      if(e) {
-          res.send({error: e, status: "Fehler", request: o, response: e});
-      } else {
-          res.send({error: e, status: r.statusCode, request: o, response: b});
-      }
+    var o = {uri: fullurl, method: req.method, json: true};
+    request(o, function (e, r, b)
+    {
+        if (e)
+        {
+            res.send({error: e, status: "Fehler", request: o, response: e});
+        }
+        else
+        {
+            res.send({error: e, status: r.statusCode, request: o, response: b});
+        }
     });
 });
 // -------------------------------------------------------------------
 // News processing using the request service.
 // a localhost:6001/news1 will send the tagesschau  RSS (XML Data)
 // -------------------------------------------------------------------
-app.get('/news1', function(req, res){
-  var o = {
-    uri: "http://www.tagesschau.de/xml/rss2",
-    method: req.method,
-    json: false
-            };
-    request(o, function(e, r, b){
-    try {
-      res.setHeader('Content-type', 'text/plain' );
-      res.send(b);
-    } catch (err) {
-      res.setHeader('Content-type', 'text/plain' );
-      console.log("Fehler beim Transfer", err)
-      res.send(err);
-    } finally {
+app.get('/news1', function (req, res)
+{
+    var o = {
+        uri   : "http://www.tagesschau.de/xml/rss2",
+        method: req.method,
+        json  : false
+    };
+    request(o, function (e, r, b)
+    {
+        try
+        {
+            res.setHeader('Content-type', 'text/plain');
+            res.send(b);
+        }
+        catch (err)
+        {
+            res.setHeader('Content-type', 'text/plain');
+            console.log("Fehler beim Transfer", err)
+            res.send(err);
+        }
+        finally
+        {
 
-    }
-  });
-  });
+        }
+    });
+});
 
 // -----------------------------------------------------------------------------
 //  Chat Management using Cloudant as DB in the Cloud
 // -----------------------------------------------------------------------------
-app.all('/chat', function (req,res) {
-  console.log(req.body.cmd);
-  if (req.body.Group == undefined || req.body.Group == "") {req.body.Group = "GlobalChat"}
-  var o = {
-    uri: "https://juergenschneider.eu-gb.mybluemix.net/chat",
-    method: "POST",
-    json: true
-            };
+app.all('/chat', function (req, res)
+{
+    console.log(req.body.cmd);
+    if (req.body.Group == undefined || req.body.Group == "")
+    {
+        req.body.Group = "GlobalChat"
+    }
+    var o = {
+        uri   : "https://juergenschneider.eu-gb.mybluemix.net/chat",
+        method: "POST",
+        json  : true
+    };
     o.body = req.body;
-    request(o, function(e, r, b){
-      if (e) {res.send({Status:"NOK", Data:e})}  // Error Case in Request Service
-      else { res.send(b) } // Send back the already formated results
+    request(o, function (e, r, b)
+    {
+        if (e)
+        {
+            res.send({Status: "NOK", Data: e})
+        }  // Error Case in Request Service
+        else
+        {
+            res.send(b)
+        } // Send back the already formated results
     });
-  });
+});

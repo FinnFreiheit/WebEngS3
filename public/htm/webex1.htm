@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="de-DE">
 <head>
+
     <link rel="stylesheet" type="text/css" href="/stylesheets/DHBWWebEngineering.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/DHBWWebRWDGrid.css">
+
     <meta charset="UTF-8">
     <title>DHBW Web Engineering Meine erste Homepage</title>
 </head>
 
-<body>
+<body class="pagegridcontainer">
 <div class="fixed">
     <header id="headerID">
         <img src="/images/logodhbw.svg" alt="W3Schools.com" width="300">
@@ -35,54 +38,73 @@
 </section>
 
 
-<table>
-    <tr id="Informatik">
-        <th>Informatik</th>
-        <td>
-            <img src="https://www.oncampus.de/blog/wp-content/uploads/2017/03/informatik-studium-768x288.jpeg"
-                 width="300" alt="infBild">
-        </td>
-        <td>
-            Informatiker übertragen Vorgänge der realen Welt auf Computersysteme,
-            indem sie die Aufgabenstellung in geeignete Modelle überführen und diese dann
-            auf Softwaresystemen abbilden. Die Vielfalt an Anwendungsmöglichkeiten ist dabei
-            nahezu unbegrenzt und steigt stetig mit der zunehmenden Leistungsfähigkeit der Systeme.
-        </td>
-    </tr>
+<div class="container">
 
-    <tr id="Elektrotechnik">
-        <th>Elektrotechnik</th>
-        <td>
-            <img src="https://www.bbw-hochschule.de/media/de/head_elektrotechnik+1440.jpg"
-                 width="300" alt="MachBild">
-        </td>
-        <td>
-            Die Elektrotechnik bewegt und verändert die Welt:
-            Smartphones, Assistenzsysteme, Smart Home oder Medizintechnik sind aus
-            unserem Leben nicht mehr wegzudenken, die Energiewende ist in aller Munde.
-            Ingenieurinnen und Ingenieure der Elektrotechnik gestalten und entwickeln
-            die Systeme und haben so einen direkten Einfluss auf unser alltägliches Leben.
-            Sie befassen sich nicht nur mit elektrischen und elektronischen Systemen, sondern arbeiten
-            in einem sehr vielfältigen Arbeitsfeld, das von der Entwicklung eines Produkts
-            über das Projektmanagement bis hin zu Marketing und Vertrieb reicht.
-        </td>
-    </tr>
+    <div id="Informatik">
+        <header>Informatik</header>
+        <div class="row">
+            <div class="col-sm">
+                <img src="https://www.oncampus.de/blog/wp-content/uploads/2017/03/informatik-studium-768x288.jpeg"
+                     width="300" alt="infBild">
+            </div>
 
-    <tr id="Maschinenbau">
-        <th>Maschinenbau</th>
-        <td>
-            <img src="https://static.wixstatic.com/media/12145f_04de27addf164244aa6665e6c5e3384e~mv2_d_2800_1866_s_2.jpg"
-                 width="300" alt="etechBild">
-        </td>
-        <td>
-            Der Maschinenbau mit seinen zahlreichen Ausprägungen verknüpft Theorie
-            und Praxis, Naturwissenschaft und Technik. Die umfassende Ausbildung an
-            der Dualen Hochschule Stuttgart ermöglicht es Absolventinnen und Absolventen
-            des Studiengangs, Aufgaben in vielen Tätigkeitsfeldern zu übernehmen:
-        </td>
-    </tr>
-</table>
+            <p class="col-sm">
+                Informatiker übertragen Vorgänge der realen Welt auf Computersysteme,
+                indem sie die Aufgabenstellung in geeignete Modelle überführen und diese dann
+                auf Softwaresystemen abbilden. Die Vielfalt an Anwendungsmöglichkeiten ist dabei
+                nahezu unbegrenzt und steigt stetig mit der zunehmenden Leistungsfähigkeit der Systeme.
+            </p>
+        </div>
 
-<footer>Copyright &copy; DHBW Stuttgart</footer>
+
+        <div id="Elektrotechnik">
+            <header>Elektrotechnik</header>
+
+            <div class="row">
+                <div class="col-sm">
+                    <img src="https://www.bbw-hochschule.de/media/de/head_elektrotechnik+1440.jpg"
+                         width="300" alt="MachBild">
+                </div>
+
+                <div class="col-sm">
+                    <p>
+                        Die Elektrotechnik bewegt und verändert die Welt:
+                        Smartphones, Assistenzsysteme, Smart Home oder Medizintechnik sind aus
+                        unserem Leben nicht mehr wegzudenken, die Energiewende ist in aller Munde.
+                        Ingenieurinnen und Ingenieure der Elektrotechnik gestalten und entwickeln
+                        die Systeme und haben so einen direkten Einfluss auf unser alltägliches Leben.
+                        Sie befassen sich nicht nur mit elektrischen und elektronischen Systemen, sondern arbeiten
+                        in einem sehr vielfältigen Arbeitsfeld, das von der Entwicklung eines Produkts
+                        über das Projektmanagement bis hin zu Marketing und Vertrieb reicht.
+                    </p>
+                </div>
+            </div>
+
+            <div id="Maschinenbau">
+                <div class="row">Maschinenbau</div>
+                <div class="col-sm">
+                    <img src="https://static.wixstatic.com/media/12145f_04de27addf164244aa6665e6c5e3384e~mv2_d_2800_1866_s_2.jpg"
+                         width="300" alt="etechBild">
+                </div>
+                <div class="col-sm">
+                    Der Maschinenbau mit seinen zahlreichen Ausprägungen verknüpft Theorie
+                    und Praxis, Naturwissenschaft und Technik. Die umfassende Ausbildung an
+                    der Dualen Hochschule Stuttgart ermöglicht es Absolventinnen und Absolventen
+                    des Studiengangs, Aufgaben in vielen Tätigkeitsfeldern zu übernehmen:
+                </div>
+            </div>
+        </div>
+
+        <footer>Copyright &copy; DHBW Stuttgart</footer>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+                crossorigin="anonymous"></script>
 </body>
 </html>
